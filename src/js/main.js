@@ -41,42 +41,83 @@ L.control.scale({position:'bottomright',imperial:false}).addTo(map);
 //
 
 //Marker Version 1
-L.marker([47, 14], {title:'markerrrrrr', clickable:true}).addTo(map).bindPopup("newpopup");
+//L.marker([47, 14], {title:'markerrrrrr', clickable:true}).addTo(map).bindPopup("newpopup");
 	
 //Marker Version 2
-var mark = L.marker([47, 12], {title:'markerrrrrr', clickable:true}).addTo(map);
-mark.bindPopup("this is my popup");
+//var mark = L.marker([47, 12], {title:'markerrrrrr', clickable:true}).addTo(map);
+//mark.bindPopup("this is my popup");
 
 //Marker Version 3	
-var myIcon = L.icon({
-iconUrl: 'css/images/house.png',
-iconSize: [38, 38]
-});
+//var myIcon = L.icon({
+//iconUrl: 'css/images/house.png',
+//iconSize: [38, 38]
+//});
 
-L.marker([48, 13], {icon: myIcon, title:'theHouse'}).addTo(map);
-
-//adding a GeoJSON polygon feature set
-var myStyle = {
-    "color": "#ff7800",
-    "weight": 2,
-    "opacity": 0.65
-}
+//L.marker([48, 13], {icon: myIcon, title:'theHouse'}).addTo(map);
 
 //
 //---- Part 4: adding features from the geojson file 
 //
 
-//the variable federalstateSBG is created in the Federalstates.js file
+const today = new Date();
+var weekday;
+if (today.getDay() - 1 < 0) {
+	weekday = 7;
+} else {
+	weekday = today.getDay() - 1;
+}
 
-var d = L.geoJson()
-var districts = L.geoJson(districtsSBG, {
-    style: myStyle,
-    onEachFeature: function (feature, layer) {
-        layer.bindPopup('Feature name: ' + feature.properties.KG);
-    }
+var datedecoder = {
+	0: "mon",
+	1: "tue",
+	2: "wed",
+	3: "thu",
+	4: "fri",
+	5: "sat",
+	6: "sun",
+	7: "hol"
+}
+
+var barClosedMarker = {
+	radius: 8,
+	fillColor: "#ff0000",
+	color: "#ff0000",
+	weight: 1,
+	opacity: 1,
+	fillOpacity: 0.8
+};
+
+var barOpenMarker = {
+	radius: 8,
+	fillColor: "#24cb01",
+	color: "#24cb01",
+	weight: 1,
+	opacity: 1,
+	fillOpacity: 0.8
+};
+
+var beerIcon = L.icon({
+	iconUrl: 'css/images/cheers.png',
+	iconSize: [24, 24]
+})
+
+function isBarOpen (feature) {
+	console.log(feature.properties.bar_name)
+	console.log(feature.properties.opening_hours[datedecoder[weekday]][0]
+		+ " - " +
+		feature.properties.opening_hours[datedecoder[weekday]][1])
+}
+
+var b = L.geoJson(bars, {
+	//icon: beerIcon
+	pointToLayer: function (feature, latlng) {
+		isBarOpen(feature);
+		return L.circleMarker(latlng, barClosedMarker);
+		//return L.Marker(latlng, {icon: beerIcon})
+	}
 });
 
-districts.addTo(map);
+b.addTo(map);
 
 //
 //---- Part 5: Adding a layer control for base maps and feature layers
@@ -84,8 +125,9 @@ districts.addTo(map);
 
 //the variable features lists layers that I want to control with the layer control
 var features = {
-	"Marker 2": mark,
-	"Salzburg": districts
+	b
+	//"Marker 2": mark,
+	//"Salzburg": districts
 }
 
 //the legend uses the layer control with entries for the base maps and two of the layers we added
