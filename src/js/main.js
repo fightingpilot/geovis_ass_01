@@ -67,6 +67,8 @@ var myStyle = {
 //
 
 //the variable federalstateSBG is created in the Federalstates.js file
+
+var d = L.geoJson()
 var districts = L.geoJson(districtsSBG, {
     style: myStyle,
     onEachFeature: function (feature, layer) {
