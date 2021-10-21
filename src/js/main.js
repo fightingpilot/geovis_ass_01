@@ -36,21 +36,6 @@ L.control.scale({position:'bottomright',imperial:false}).addTo(map);
 //---- Part 3: Adding symbols ---- 
 //
 
-//Marker Version 1
-L.marker([47, 14], {title:'markerrrrrr', clickable:true}).addTo(map).bindPopup("newpopup");
-	
-//Marker Version 2
-var mark = L.marker([47, 12], {title:'markerrrrrr', clickable:true}).addTo(map);
-mark.bindPopup("this is my popup");
-
-//Marker Version 3	
-//var myIcon = L.icon({
-//iconUrl: 'css/images/cheers.png',
-//iconSize: [38, 38]
-//});
-
-//L.marker([48, 13], {icon: myIcon, title:'theHouse'}).addTo(map);
-
 //
 //---- Part 4: adding features from the geojson file 
 //
