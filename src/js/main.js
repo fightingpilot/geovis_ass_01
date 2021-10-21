@@ -7,13 +7,9 @@
 //creating the map; defining the location in the center of the map (geographic coords) and the zoom level. These are properties of the leaflet map object
 //the map window has been given the id 'map' in the .html file
 var map = L.map('map', {
-	center: [47.5, 13.05],
-	zoom: 9
+	center: [47.800998, 13.044625],
+	zoom: 14
 });
-
-// alternatively the setView method could be used for placing the map in the window
-//var map = L.map('map').setView([47.5, 13.05], 8);
-
 
 //adding two base maps 
 
@@ -41,11 +37,11 @@ L.control.scale({position:'bottomright',imperial:false}).addTo(map);
 //
 
 //Marker Version 1
-//L.marker([47, 14], {title:'markerrrrrr', clickable:true}).addTo(map).bindPopup("newpopup");
+L.marker([47, 14], {title:'markerrrrrr', clickable:true}).addTo(map).bindPopup("newpopup");
 	
 //Marker Version 2
-//var mark = L.marker([47, 12], {title:'markerrrrrr', clickable:true}).addTo(map);
-//mark.bindPopup("this is my popup");
+var mark = L.marker([47, 12], {title:'markerrrrrr', clickable:true}).addTo(map);
+mark.bindPopup("this is my popup");
 
 //Marker Version 3	
 //var myIcon = L.icon({
@@ -78,6 +74,17 @@ var datedecoder = {
 	7: "hol"
 }
 
+var weekdaydecoder = {
+	"mon": "Montag",
+	"tue": "Dienstag",
+	"wed": "Mittwoch",
+	"thu": "Donnestag",
+	"fri": "Freitag",
+	"sat": "Samstag",
+	"sun": "Sonntag",
+	"hol": "Feiertag"
+}
+
 var barClosedMarker = L.icon({
 	iconUrl: 'css/images/cheers(1).png',
 	iconSize: [24, 24]
@@ -89,10 +96,10 @@ var barOpenMarker = L.icon({
 });
 
 function isBarOpen (feature) {
-	console.log(feature.properties.bar_name)
-	console.log(feature.properties.opening_hours[datedecoder[weekday]][0]
-		+ " - " +
-		feature.properties.opening_hours[datedecoder[weekday]][1])
+	//console.log(feature.properties.bar_name)
+	//console.log(feature.properties.opening_hours[datedecoder[weekday]][0]
+	//	+ " - " +
+	//	feature.properties.opening_hours[datedecoder[weekday]][1])
 	if (feature.properties.opening_hours[datedecoder[weekday]][0] === undefined ||
 		feature.properties.opening_hours[datedecoder[weekday]][0].length > 5) {
 		return false;
@@ -135,16 +142,66 @@ function isBarOpen (feature) {
 	}
 }
 
-var b = L.geoJson(bars, {
-	//icon: beerIcon
+function barMarker (feature, latlng, marker) {
+	console.log("barMarker")
+	console.log(feature.properties.bar_name)
+	var mark = L.marker(latlng, {icon: marker, title: feature.properties.bar_name, clickable:true});
+	var popupText = "<h3>" + feature.properties.bar_name + "</h3>" +
+		"<p><b>Öffnungszeiten</b><br>"
+	for (opening_hour in feature.properties.opening_hours) {
+		console.log(feature.properties.opening_hours[opening_hour])
+		popupText += weekdaydecoder[opening_hour] + ": ";
+		if (feature.properties.opening_hours[opening_hour].length === 0) {
+			popupText += "Keine Öffnungszeiten bekannt";
+		} else
+			popupText += feature.properties.opening_hours[opening_hour][0]
+			if (feature.properties.opening_hours[opening_hour][1] === undefined) {
+				popupText += "<br>"
+			} else {
+				popupText += " - " +
+					feature.properties.opening_hours[opening_hour][1] + "<br>";
+			}
+	}
+
+	popupText += "</p>"
+
+	popupText += "<p></p><b>Kontakt</b><br>";
+	popupText += "Fon: <a href=tel:" + feature.properties.phone + ">" + feature.properties.phone + "</a><br>";
+	popupText += 'Internet: <a target="_blank" rel="noopener noreferrer" href=' + feature.properties.web + '>' + feature.properties.web + '</a><br>'
+	popupText += 'Addresse: ' + feature.properties.address + '</p>'
+	popupText += '<p><b>Info</b><br>'
+	popupText += feature.properties.info + "</p>"
+	mark.bindPopup(popupText);
+	return mark;
+}
+
+var allBars = L.geoJson(bars, {
 	pointToLayer: function (feature, latlng) {
 		if (isBarOpen(feature)) {
-			return L.marker(latlng, {icon: barOpenMarker});
-		}else return L.marker(latlng, {icon: barClosedMarker});
+			return barMarker(feature, latlng, barOpenMarker);
+		}else return barMarker(feature, latlng, barClosedMarker);
 	}
 });
 
-b.addTo(map);
+var openBars = L.geoJson(bars, {
+	pointToLayer: function (feature, latlng) {
+		if (isBarOpen(feature)) {
+			return L.marker(latlng, {icon: barOpenMarker});
+		}
+	}
+});
+
+var closedBars = L.geoJson(bars, {
+	pointToLayer: function (feature, latlng) {
+		if (!isBarOpen(feature)) {
+			return L.marker(latlng, {icon: barClosedMarker});
+		}
+	}
+});
+
+allBars.addTo(map);
+//openBars.addTo(map);
+//closedBars.addTo(map);
 
 //
 //---- Part 5: Adding a layer control for base maps and feature layers
@@ -152,9 +209,9 @@ b.addTo(map);
 
 //the variable features lists layers that I want to control with the layer control
 var features = {
-	"Bars": b
-	//"Marker 2": mark,
-	//"Salzburg": districts
+	"Bars": allBars//,
+	//"Geöffnete Bars": openBars,
+	//"Geschlossene Bars": closedBars
 }
 
 //the legend uses the layer control with entries for the base maps and two of the layers we added
