@@ -49,7 +49,7 @@ L.control.scale({position:'bottomright',imperial:false}).addTo(map);
 
 //Marker Version 3	
 //var myIcon = L.icon({
-//iconUrl: 'css/images/house.png',
+//iconUrl: 'css/images/cheers.png',
 //iconSize: [38, 38]
 //});
 
@@ -78,42 +78,69 @@ var datedecoder = {
 	7: "hol"
 }
 
-var barClosedMarker = {
-	radius: 8,
-	fillColor: "#ff0000",
-	color: "#ff0000",
-	weight: 1,
-	opacity: 1,
-	fillOpacity: 0.8
-};
+var barClosedMarker = L.icon({
+	iconUrl: 'css/images/cheers(1).png',
+	iconSize: [24, 24]
+});
 
-var barOpenMarker = {
-	radius: 8,
-	fillColor: "#24cb01",
-	color: "#24cb01",
-	weight: 1,
-	opacity: 1,
-	fillOpacity: 0.8
-};
-
-var beerIcon = L.icon({
+var barOpenMarker = L.icon({
 	iconUrl: 'css/images/cheers.png',
 	iconSize: [24, 24]
-})
+});
 
 function isBarOpen (feature) {
 	console.log(feature.properties.bar_name)
 	console.log(feature.properties.opening_hours[datedecoder[weekday]][0]
 		+ " - " +
 		feature.properties.opening_hours[datedecoder[weekday]][1])
+	if (feature.properties.opening_hours[datedecoder[weekday]][0] === undefined ||
+		feature.properties.opening_hours[datedecoder[weekday]][0].length > 5) {
+		return false;
+	} else {
+		var t = feature.properties.opening_hours[datedecoder[weekday]][0].split(":")
+		var d = new Date(
+			today.getFullYear(),
+			today.getMonth(),
+			today.getDate(),
+			t[0],
+			t[1],
+			0,
+			0)
+		if (today.getTime() < d.getTime()) {
+			return false;
+		} else {
+			if (feature.properties.opening_hours[datedecoder[weekday]][1] === undefined) {
+				return true;
+			} else {
+				var t = feature.properties.opening_hours[datedecoder[weekday]][1].split(":")
+				var dd = new Date(
+					today.getFullYear(),
+					today.getMonth(),
+					today.getDate(),
+					t[0],
+					t[1],
+					0,
+					0
+				)
+				if (dd.getTime() < d.getTime()) {
+					dd.setHours(dd.getHours() + 24)
+				}
+				//console.log(dd)
+				if (today.getTime() <= dd.getTime()) {
+					return true;
+				}
+				else return false;
+			}
+		}
+	}
 }
 
 var b = L.geoJson(bars, {
 	//icon: beerIcon
 	pointToLayer: function (feature, latlng) {
-		isBarOpen(feature);
-		return L.circleMarker(latlng, barClosedMarker);
-		//return L.Marker(latlng, {icon: beerIcon})
+		if (isBarOpen(feature)) {
+			return L.marker(latlng, {icon: barOpenMarker});
+		}else return L.marker(latlng, {icon: barClosedMarker});
 	}
 });
 
@@ -125,7 +152,7 @@ b.addTo(map);
 
 //the variable features lists layers that I want to control with the layer control
 var features = {
-	b
+	"Bars": b
 	//"Marker 2": mark,
 	//"Salzburg": districts
 }
