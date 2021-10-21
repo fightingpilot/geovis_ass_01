@@ -1014,7 +1014,7 @@ var bars = {
 			"sun": [],
 			"hol": []
 		},
-		"address": "Chiemseegasse 2",
+		"address": "Chiemseegasse 2, 5020 Salzburg",
 		"phone": "+43650 4530547 ",
 		"web": "http://www.stage-bar.at/",
 		"info": "Im Herzen der Altstadt gelegen, überrascht die StageBar Salzburg als einzige Bar der Mozartstadt mit regelmäßiger LIVE Musik. Egal ob Jazz, Swing, Latin, Blues, Rock and Roll, A cappella oder Chanson - hier kommen Musikliebhaber aller Genres voll auf ihre Kosten! Neben der musikalischen Unterhaltung ist auch für das leibliche Wohl bestens gesorgt. Genießen Sie ausgesuchte Weine, zapffrisches Bier sowie etliche Spirituosen und Mischgetränke."
