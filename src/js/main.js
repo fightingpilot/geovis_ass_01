@@ -128,13 +128,13 @@ function isBarOpen (feature) {
 }
 
 function barMarker (feature, latlng, marker) {
-	console.log("barMarker")
-	console.log(feature.properties.bar_name)
+	//console.log("barMarker")
+	//console.log(feature.properties.bar_name)
 	var mark = L.marker(latlng, {icon: marker, title: feature.properties.bar_name, clickable:true});
 	var popupText = "<h3>" + feature.properties.bar_name + "</h3>" +
 		"<p><b>Öffnungszeiten</b><br>"
 	for (opening_hour in feature.properties.opening_hours) {
-		console.log(feature.properties.opening_hours[opening_hour])
+		//console.log(feature.properties.opening_hours[opening_hour])
 		popupText += weekdaydecoder[opening_hour] + ": ";
 		if (feature.properties.opening_hours[opening_hour].length === 0) {
 			popupText += "Keine Öffnungszeiten bekannt";
