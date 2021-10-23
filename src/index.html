@@ -13,12 +13,38 @@
 		<script src="js/leaflet-src.js"></script>
 		<!--link to the file that contains geoJson data-->
 		<script src="data/bars.js" type="text/javascript"> </script>
+		<!--link to the language support-->
+		<script src="js/lang/lang.js" type="text/javascript"></script>
 				
 	</head>
 	<body>
+		<a href="#en" data-reload>English</a>
+		<a href="#de" data-reload>Deutsch</a>
 		<!--the sequence of elements called matters!-->
 		<!-- title of your map-->
-		<h1> Are you thirsty? </h1>
+		<h1 id="head"></h1>
+		<script>
+			var dataReload = document.querySelectorAll("[data-reload]");
+			if(window.location.hash){
+				if (window.location.hash === "#de") {
+					head.textContent = de.heading;
+				}
+				if (window.location.hash === "#en") {
+					head.textContent = en.heading;
+				}
+			} else {
+				head.textContent = en.heading;
+			}
+
+			for (i = 0; i < dataReload.length; i++) {
+				dataReload[i].onclick = function () {
+					setTimeout(function () {
+						location.reload();
+					}, 10)
+					//location.reload();
+				};
+			};
+		</script>
 		
 		<!-- division div for the map -->
 		<div id="map"></div>
