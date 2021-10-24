@@ -18,7 +18,10 @@ var bars = {
 		"address": "Ursulinenplatz 2, 5020 Salzburg",
 		"phone": "+43662841270",
 		"web": "http://www.clubafterfive.at/",
-		"info": "Das After Five bietet angenehme Barmusik an der Bar im Obergeschoß oder House und R`n`B Beats im Untergeschoß zum Weiterfeiern."
+		"info": {
+			de: "Das After Five bietet angenehme Barmusik an der Bar im Obergeschoß oder House und R`n`B Beats im Untergeschoß zum Weiterfeiern.",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -45,7 +48,10 @@ var bars = {
 		"address": "Bergstraße 10, 5020 Salzburg",
 		"phone": "+436606815725",
 		"web": "http://www.alchimiste-belge.at/",
-		"info": "Circa 150 verschiedene Biere stehen jeden Tag bei uns zur Verfügung um euch in der bezauberndsten und einzigartigsten Bierbar Salzburgs zu verführen!"
+		"info": {
+			de: "Circa 150 verschiedene Biere stehen jeden Tag bei uns zur Verfügung um euch in der bezauberndsten und einzigartigsten Bierbar Salzburgs zu verführen!",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -72,7 +78,10 @@ var bars = {
 		"address": "Gstättengasse 23, 5020 Salzburg",
 		"phone": "+43662 846898",
 		"web": "http://gstaettengasse.segabar.at/",
-		"info": "DER Party-Treffpunkt in der Salzburger Altstadt mit senstationellen Preisen und täglichen Getränkespecials. Einlass ab 18 Jahren! "
+		"info": {
+			de: "DER Party-Treffpunkt in der Salzburger Altstadt mit senstationellen Preisen und täglichen Getränkespecials. Einlass ab 18 Jahren! ",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -99,7 +108,10 @@ var bars = {
 		"address": "Gstättengasse 4-6, 5020 Salzburg",
 		"phone": "",
 		"web": "https://www.halfmoon.at/",
-		"info": "Das 'Half Moon' ist der älteste Club Salzburgs. In einem 600 Jahre alten Gewölbe bietet der Club Half Moon seinen Besuchern vier Bars, eine Tanzfl\äche und zwei Lounges. 'Half Moon' ist der älteste Club Salzburgs. In einem 600 Jahre alten Gewölbe bietet der Club Half Moon seinen Besuchern vier Bars, eine Tanzfläche und zwei Lounges. "
+		"info": {
+			de: "Das 'Half Moon' ist der älteste Club Salzburgs. In einem 600 Jahre alten Gewölbe bietet der Club Half Moon seinen Besuchern vier Bars, eine Tanzfl\äche und zwei Lounges. 'Half Moon' ist der älteste Club Salzburgs. In einem 600 Jahre alten Gewölbe bietet der Club Half Moon seinen Besuchern vier Bars, eine Tanzfläche und zwei Lounges.",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -126,7 +138,10 @@ var bars = {
 		"address": "Lederergasse 8, 5020 Salzburg",
 		"phone": "",
 		"web": "http://www.bricks-bar.at/",
-		"info": "In der Bricks Music Bar werden Rock, Alternative und Metal in gemütlicher, ungezwungener Atmosphäre gespielt. Einlass ist ab 18 Jahren! "
+		"info": {
+			de: "In der Bricks Music Bar werden Rock, Alternative und Metal in gemütlicher, ungezwungener Atmosphäre gespielt. Einlass ist ab 18 Jahren!",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -153,7 +168,10 @@ var bars = {
 		"address": "Schiffsanlegestelle Franz-Josef-Kai 1a, 5020 Salzburg",
 		"phone": "+43662 825769-23",
 		"web": "http://www.salzburghighlights.at/de/Salzach-Insel-Bar",
-		"info": "Die Amadeus Salzach-Insel-Bar ist Salzburg's einzige Bar am Fluss Salzach mit unvergleichbarer Atmosphäre und Ausblick auf die Stadt. Zwei Terrassen sowie ein Barbereich bieten die idealen Rahmenbedingungen für exklusive Veranstaltungen und Partys."
+		"info": {
+			de: "Die Amadeus Salzach-Insel-Bar ist Salzburg's einzige Bar am Fluss Salzach mit unvergleichbarer Atmosphäre und Ausblick auf die Stadt. Zwei Terrassen sowie ein Barbereich bieten die idealen Rahmenbedingungen für exklusive Veranstaltungen und Partys.",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -180,7 +198,10 @@ var bars = {
 		"address": "Schwarzstraße 10, 5020 Salzburg",
 		"phone": "+43660 2602785",
 		"web": "http://www.beerlounge.at/",
-		"info": "Bei uns könnt ihr 50-60 internationale (Craft-)Biere, Stiegl-Klassiker und -Spezialitäten in modern-loungiger Atmosphäre genießen, dazu servieren wir g'schmackige Snacks und natürlich einen exzellenten Musikmix!"
+		"info": {
+			de: "Bei uns könnt ihr 50-60 internationale (Craft-)Biere, Stiegl-Klassiker und -Spezialitäten in modern-loungiger Atmosphäre genießen, dazu servieren wir g'schmackige Snacks und natürlich einen exzellenten Musikmix!",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -207,7 +228,10 @@ var bars = {
 		"address": "Alpenstraße 92-94, 5020 Salzburg",
 		"phone": "+43662 835020",
 		"web": "http://www.motel-one.com/",
-		"info": "Runden Sie Ihren Salzburg-Besuch in der wohl best sortiertesten Gin Bar Salzburgs ab."
+		"info": {
+			de: "Runden Sie Ihren Salzburg-Besuch in der wohl best sortiertesten Gin Bar Salzburgs ab.",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -234,7 +258,10 @@ var bars = {
 		"address": "Rupertgasse 10, 5020 Salzburg",
 		"phone": "+43662 872246",
 		"web": "http://www.dieweisse.at/",
-		"info": "In der angesagten Loftbar trifft urgemütliche Atmosphäre auf ein modernes Szenario – und dieser harmonische Zweiklang bewegt sich ganz bewusst zwischen Tradition und Trend. Natürlich gibt es auch Platz für extrem angesagte Veranstaltungen: Bei unseren Events und Clubbings wird’s regelmäßig super-kultig und das Leben lässt sich einfach unbeschwerter genießen."
+		"info": {
+			de: "In der angesagten Loftbar trifft urgemütliche Atmosphäre auf ein modernes Szenario – und dieser harmonische Zweiklang bewegt sich ganz bewusst zwischen Tradition und Trend. Natürlich gibt es auch Platz für extrem angesagte Veranstaltungen: Bei unseren Events und Clubbings wird’s regelmäßig super-kultig und das Leben lässt sich einfach unbeschwerter genießen.",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -261,7 +288,10 @@ var bars = {
 		"address": "Paracelsusstraße 11, 5020 Salzburg",
 		"phone": "+43662 230214",
 		"web": "http://www.dark-eagle.at/",
-		"info": "Das 'Dark Eagle' ist eine Gay-Bar mit Einlasskontrolle ab 18 Jahren. Jeden Dienstag und Donnerstag ist das Lokal für alle geöffnet."
+		"info": {
+			de: "Das 'Dark Eagle' ist eine Gay-Bar mit Einlasskontrolle ab 18 Jahren. Jeden Dienstag und Donnerstag ist das Lokal für alle geöffnet.",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -288,7 +318,10 @@ var bars = {
 		"address": "Imbergstraße 11, 5020 Salzburg",
 		"phone": "+43662 846898 ",
 		"web": "http://imbergstrasse.segabar.at/",
-		"info": "Einzigartiges Szene-Konzept mit besonderen Preisen. Einlass ab 18 Jahren!"
+		"info": {
+			de: "Einzigartiges Szene-Konzept mit besonderen Preisen. Einlass ab 18 Jahren!",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -315,7 +348,10 @@ var bars = {
 		"address": "Lederergasse 6, 5020 Salzburg",
 		"phone": "+43660 6666261",
 		"web": "http://www.salzburgwhiskeymuseum.com/",
-		"info": ""
+		"info": {
+			de: "",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -342,7 +378,10 @@ var bars = {
 		"address": "Griesgasse 23, 5020 Salzburg",
 		"phone": "+43664 1491000",
 		"web": "http://www.citybeats.at/",
-		"info": "Der Club befindet sich im historischen und alteingesessenen Sternbräu Gebäude im Herzen der Altstadt. Citybeats bringt die internationale Musikszene und den Flair internationaler Clubs nach Salzburg"
+		"info": {
+			de: "Der Club befindet sich im historischen und alteingesessenen Sternbräu Gebäude im Herzen der Altstadt. Citybeats bringt die internationale Musikszene und den Flair internationaler Clubs nach Salzburg",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -369,7 +408,10 @@ var bars = {
 		"address": "Schallmooser Hauptstraße 44, 5020 Salzburg",
 		"phone": "+43660 4445494",
 		"web": "http://thejigger.bar/",
-		"info": "Bar für coole Cocktails, Drinks und Craft Beer."
+		"info": {
+			de: "Bar für coole Cocktails, Drinks und Craft Beer.",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -396,7 +438,10 @@ var bars = {
 		"address": "Steingasse 11, 5020 Salzburg",
 		"phone": "+43662 881377 ",
 		"web": "https://de-de.facebook.com/SaitensprungBar",
-		"info": "Am Fuße des Kapuzinerberges in einer der ältesten Gassen Salzburgs"
+		"info": {
+			de: "Am Fuße des Kapuzinerberges in einer der ältesten Gassen Salzburgs",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -423,7 +468,10 @@ var bars = {
 		"address": "Imbergstraße 11, 5020 Salzburg",
 		"phone": "+43664 5003563",
 		"web": "https://www.facebook.com/GillisBar",
-		"info": ""
+		"info": {
+			de: "",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -450,7 +498,10 @@ var bars = {
 		"address": "Gstättengasse 7, 5020 Salzburg",
 		"phone": "+43664 2365465",
 		"web": "https://www.club-g7.at/",
-		"info": "Der Club G7 steht für Eleganz, Lifestyle und Schönheit in Union: zeitloses Design, perfektes Club-Ambiente und eine Welcome-Lounge. Coole Drinks, perfektes Service sowie HouseMusic mit internationalem Format - all das inmitten der Salzburger Altstadt."
+		"info": {
+			de: "Der Club G7 steht für Eleganz, Lifestyle und Schönheit in Union: zeitloses Design, perfektes Club-Ambiente und eine Welcome-Lounge. Coole Drinks, perfektes Service sowie HouseMusic mit internationalem Format - all das inmitten der Salzburger Altstadt.",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -477,7 +528,10 @@ var bars = {
 		"address": "Elisabethstraße 11, 5020 Salzburg",
 		"phone": "+43662 882337",
 		"web": "http://www.jazzit.at/",
-		"info": "Ob ein erfrischender Cocktail oder ein Glas edler Wein - in der Jazzit:Bar können sie bei jazzig-groovigen Sounds vielzählige Drinks sowie eine Auswahl kleiner Speisen genießen."
+		"info": {
+			de: "Ob ein erfrischender Cocktail oder ein Glas edler Wein - in der Jazzit:Bar können sie bei jazzig-groovigen Sounds vielzählige Drinks sowie eine Auswahl kleiner Speisen genießen.",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -504,7 +558,10 @@ var bars = {
 		"address": "Gstättengasse 3",
 		"phone": "+43664 9133810 ",
 		"web": "https://www.facebook.com/mentors.bar/",
-		"info": "Eine klassisch-moderne Bar im authentischen Ambiente."
+		"info": {
+			de: "Eine klassisch-moderne Bar im authentischen Ambiente.",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -531,7 +588,10 @@ var bars = {
 		"address": "Imbergstraße 2a, 5020 Salzburg",
 		"phone": "",
 		"web": "http://www.monkeys-salzburg.at/",
-		"info": "Monkeys cafe.bar - einfach affengeil. Direkt an der Salzach gelegen mit einem wunderschönen Blick auf die Altstadt und die Festung Hohensalzburg. Monkeys cafe.bar - ist mit seinem Lounge- und Barbereich nicht nur ein idealer Treffpunkt für Kaffeegenießer, sondern auch für freche Partyaffen, die ausgelassen feiern möchten. Täglich geöffnet ab 11.30 Uhr lädt Monkeys cafe.bar Kaffeeliebhaber zum Verweilen ein - und später, wenn es im Winter zu dämmern beginnt, der Arbeitstag sein Ende gefunden hat, geht es weiter mit einem guten Glas Wein oder mit Cocktails bis in die frühen Morgenstunden. Das kreative Monkeys-Team verführt auch im Winter mit klassischen, sowie stets neuen Kaffee- und Cocktailvariationen. Monkeys cafe.bar ist für private Veranstaltungen exklusiv zu haben - egal ob für kleinere oder größere Geburtstags- oder Weihnachtsfeiern. Schau vorbei - die Affen werden sich freuen."
+		"info": {
+			de: "Monkeys cafe.bar - einfach affengeil. Direkt an der Salzach gelegen mit einem wunderschönen Blick auf die Altstadt und die Festung Hohensalzburg. Monkeys cafe.bar - ist mit seinem Lounge- und Barbereich nicht nur ein idealer Treffpunkt für Kaffeegenießer, sondern auch für freche Partyaffen, die ausgelassen feiern möchten. Täglich geöffnet ab 11.30 Uhr lädt Monkeys cafe.bar Kaffeeliebhaber zum Verweilen ein - und später, wenn es im Winter zu dämmern beginnt, der Arbeitstag sein Ende gefunden hat, geht es weiter mit einem guten Glas Wein oder mit Cocktails bis in die frühen Morgenstunden. Das kreative Monkeys-Team verführt auch im Winter mit klassischen, sowie stets neuen Kaffee- und Cocktailvariationen. Monkeys cafe.bar ist für private Veranstaltungen exklusiv zu haben - egal ob für kleinere oder größere Geburtstags- oder Weihnachtsfeiern. Schau vorbei - die Affen werden sich freuen.",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -558,7 +618,10 @@ var bars = {
 		"address": "Gstättengasse 21",
 		"phone": "+43664 5720817",
 		"web": "http://www.sodaclub.cc/",
-		"info": "Der SodaClub ist Salzburgs Club für elektronische Musik - angefangen von House, Deep-House und TechHouse bis hin zu Drum & Bass und Dubstep. Mitten in der Salzburger Altstadt bietet der SodaClub abwechslungsreiche Dj Acts aus dem In- und Ausland."
+		"info": {
+			de: "Der SodaClub ist Salzburgs Club für elektronische Musik - angefangen von House, Deep-House und TechHouse bis hin zu Drum & Bass und Dubstep. Mitten in der Salzburger Altstadt bietet der SodaClub abwechslungsreiche Dj Acts aus dem In- und Ausland.",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -585,7 +648,10 @@ var bars = {
 		"address": "Priesterhausgasse 14, 5020 Salzburg",
 		"phone": "+43662 870092",
 		"web": "http://www.havana.at/",
-		"info": "Seit Jahrzehnten Salzburgs erste Adresse, wenn es um Cocktails geht."
+		"info": {
+			de: "Seit Jahrzehnten Salzburgs erste Adresse, wenn es um Cocktails geht.",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -612,7 +678,10 @@ var bars = {
 		"address": "Giselakai 17",
 		"phone": "+43662 873967",
 		"web": "http://www.meindaimlers.at/",
-		"info": "Neben Burgern finden Sie auf der Speisekarte des Daimler's Grill auch saftige Steaks, amerikanische Hot Dogs, würziges Chili und andere herzhafte Leckereien. In der Daimler's Bar können Sie kühlende Drinks bei pulsierenden DJ-Beats genießen."
+		"info": {
+			de: "Neben Burgern finden Sie auf der Speisekarte des Daimler's Grill auch saftige Steaks, amerikanische Hot Dogs, würziges Chili und andere herzhafte Leckereien. In der Daimler's Bar können Sie kühlende Drinks bei pulsierenden DJ-Beats genießen.",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -639,7 +708,10 @@ var bars = {
 		"address": "Gstättengasse 17, 5020 Salzburg",
 		"phone": "+43662 843643",
 		"web": "http://www.flip-cocktailbar.cc/",
-		"info": "Die Flip Cocktailbar ist auf gute Cocktails und Longdrinks spezialisiert. Sie liegt im Mönchsberg und verfügt über einen beheizbaren Gastgarten. Die Musik reicht von Alternative Rock bis Metal, je nach Tages- und Nachtzeit."
+		"info": {
+			de: "Die Flip Cocktailbar ist auf gute Cocktails und Longdrinks spezialisiert. Sie liegt im Mönchsberg und verfügt über einen beheizbaren Gastgarten. Die Musik reicht von Alternative Rock bis Metal, je nach Tages- und Nachtzeit.",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -666,7 +738,10 @@ var bars = {
 		"address": "Schallmooser Hauptstraße 20, 5020 Salzburg",
 		"phone": "+43699 17101902",
 		"web": "http://www.mexxxgaybar.at/",
-		"info": ""
+		"info": {
+			de: "",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -693,7 +768,10 @@ var bars = {
 		"address": "Giselakai 17a, 5020 Salzburg",
 		"phone": "+43662 254776",
 		"web": "https://www.cultbar.at/",
-		"info": ""
+		"info": {
+			de: "",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -720,7 +798,10 @@ var bars = {
 		"address": "Franz-Josef-Straße 4, 5020 Salzburg",
 		"phone": "+43662 875797",
 		"web": "http://www.academy-salzburg.at/",
-		"info": "Ob im gemütlichen Gastgarten oder direkt an der Bar über die Freuden des Lebens philosophieren. Die academy Café-Bar ist ein Treffpunkt für kreative, weltoffene und gemütliche Menschen im Herzen des pulsierenden Andräviertels."
+		"info": {
+			de: "Ob im gemütlichen Gastgarten oder direkt an der Bar über die Freuden des Lebens philosophieren. Die academy Café-Bar ist ein Treffpunkt für kreative, weltoffene und gemütliche Menschen im Herzen des pulsierenden Andräviertels.",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -747,7 +828,10 @@ var bars = {
 		"address": "Bergstraße 5-7, 5020 Salzburg",
 		"phone": "+43662 276295",
 		"web": "http://www.schnaitl.at/schnaitl-bier-bar.html",
-		"info": "Neue Bar und Einrichtung verbunden mit 35 Jahre alter Tradition. Drinks, Snacks, das köstliche Bier aus dem Innviertler Privatbrauerei Schnaitl, Tischfußball und gute Musik."
+		"info": {
+			de: "Neue Bar und Einrichtung verbunden mit 35 Jahre alter Tradition. Drinks, Snacks, das köstliche Bier aus dem Innviertler Privatbrauerei Schnaitl, Tischfußball und gute Musik.",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -774,7 +858,10 @@ var bars = {
 		"address": "Anton-Neumayr-Platz 5, 5020 Salzburg",
 		"phone": "+43 662 254881",
 		"web": "http://www.rialto-clubcafe.at/",
-		"info": ""
+		"info": {
+			de: "",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -801,7 +888,10 @@ var bars = {
 		"address": "Priesterhausgasse 22, 5020 Salzburg",
 		"phone": "+43676 4464493",
 		"web": "http://irishpubsalzburg.com/",
-		"info": "Wir, 'Celtic Spirit' bringen ein kleines Stück Irland nach Salzburg. Bei uns wird Gastfreundschaft groß geschrieben und natürlich legen wir besonderen Wert auf das Wohlbefinden unserer Gäste. Eine gemütlichen Atmosphäre und eine große Auswahl an verschiedenster Produkte soll unseren Gästen ein unvergessliches Erlebnis verschaffen. "
+		"info": {
+			de: "Wir, 'Celtic Spirit' bringen ein kleines Stück Irland nach Salzburg. Bei uns wird Gastfreundschaft groß geschrieben und natürlich legen wir besonderen Wert auf das Wohlbefinden unserer Gäste. Eine gemütlichen Atmosphäre und eine große Auswahl an verschiedenster Produkte soll unseren Gästen ein unvergessliches Erlebnis verschaffen.",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -828,7 +918,10 @@ var bars = {
 		"address": "Steingasse 10, 5020 Salzburg",
 		"phone": "",
 		"web": "https://www.facebook.com/pages/Fungos-Cafe-Bar/1748878805434116",
-		"info": "Gayfriendly"
+		"info": {
+			de: "Gayfriendly",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -855,7 +948,10 @@ var bars = {
 		"address": "Rudolfskai 18, 5020 Salzburg",
 		"phone": "+43662 846898",
 		"web": "http://rudolfskai18.segabar.at/",
-		"info": "Einzigartiges Szene-Konzept mit besonderen Preisen. Einlass ab 16 Jahren!"
+		"info": {
+			de: "Einzigartiges Szene-Konzept mit besonderen Preisen. Einlass ab 16 Jahren!",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -882,7 +978,10 @@ var bars = {
 		"address": "Steingasse 3, 5020 Salzburg",
 		"phone": "+43662 873662",
 		"web": "http://www.pepe-cocktailbar.at/",
-		"info": ""
+		"info": {
+			de: "",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -909,7 +1008,10 @@ var bars = {
 		"address": "Schallmooser Hauptstraße 46, 5020 Salzburg",
 		"phone": "",
 		"web": "http://www.rockhouse-bar.at/",
-		"info": "Die Rockhouse Bar zählt zu den alternativsten Lokale Salzburg. Hier treffen exzellente Musik und gemütliche Atmosphäre aufeinander. Ob Konzerte, DJs oder ein geselliges Zusammentreffen im Gastgarten – diese Bar hat Charakter!"
+		"info": {
+			de: "Die Rockhouse Bar zählt zu den alternativsten Lokale Salzburg. Hier treffen exzellente Musik und gemütliche Atmosphäre aufeinander. Ob Konzerte, DJs oder ein geselliges Zusammentreffen im Gastgarten – diese Bar hat Charakter!",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -936,7 +1038,10 @@ var bars = {
 		"address": "Giselakai 15, 5020 Salzburg",
 		"phone": "+43662 874335",
 		"web": "https://www.facebook.com/chezroland/",
-		"info": "Seit fast 40 Jahren ist 'Chez Roland' nun fixer Bestandteil im Nachtleben von Salzburg und bietet seinen Gästen jeher guten Service, coole Musik und eine gemütliche Umgebung zum Wohlfühlen."
+		"info": {
+			de: "Seit fast 40 Jahren ist 'Chez Roland' nun fixer Bestandteil im Nachtleben von Salzburg und bietet seinen Gästen jeher guten Service, coole Musik und eine gemütliche Umgebung zum Wohlfühlen.",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -963,7 +1068,10 @@ var bars = {
 		"address": "Wilhelm-Spazier-Straße 7a, 5020 Salzburg",
 		"phone": "+43662 2197-0",
 		"web": "http://www.hangar-7.com/de/day-night/mayday-bar/",
-		"info": "In der Mayday Bar versprühen nicht nur die im Hangar-7 ausgestellten historischen Flugzeuge, die man hier aus der Vogelperspektive bestaunen kann, den Hauch von Grenzenlosigkeit. Das tun auch die Getränke- und Speisekarte. Die Mayday Bar im Hangar-7 verwöhnt Sie mit internationalen Cocktails und geschmackvollen Bar-Food-Gerichten."
+		"info": {
+			de: "In der Mayday Bar versprühen nicht nur die im Hangar-7 ausgestellten historischen Flugzeuge, die man hier aus der Vogelperspektive bestaunen kann, den Hauch von Grenzenlosigkeit. Das tun auch die Getränke- und Speisekarte. Die Mayday Bar im Hangar-7 verwöhnt Sie mit internationalen Cocktails und geschmackvollen Bar-Food-Gerichten.",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -990,7 +1098,10 @@ var bars = {
 		"address": "Gstättengasse 3, 5020 Salzburg",
 		"phone": "+43664 3136547",
 		"web": "https://www.facebook.com/PetersBarVinothek/",
-		"info": "Österreichische Weine, Cocktails, Champagner und kleine kulinarische Schmankerl. Jeden 1. Samstag im Monat: Weißwurstessen"
+		"info": {
+			de: "Österreichische Weine, Cocktails, Champagner und kleine kulinarische Schmankerl. Jeden 1. Samstag im Monat: Weißwurstessen",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
@@ -1017,7 +1128,10 @@ var bars = {
 		"address": "Chiemseegasse 2, 5020 Salzburg",
 		"phone": "+43650 4530547 ",
 		"web": "http://www.stage-bar.at/",
-		"info": "Im Herzen der Altstadt gelegen, überrascht die StageBar Salzburg als einzige Bar der Mozartstadt mit regelmäßiger LIVE Musik. Egal ob Jazz, Swing, Latin, Blues, Rock and Roll, A cappella oder Chanson - hier kommen Musikliebhaber aller Genres voll auf ihre Kosten! Neben der musikalischen Unterhaltung ist auch für das leibliche Wohl bestens gesorgt. Genießen Sie ausgesuchte Weine, zapffrisches Bier sowie etliche Spirituosen und Mischgetränke."
+		"info": {
+			de: "Im Herzen der Altstadt gelegen, überrascht die StageBar Salzburg als einzige Bar der Mozartstadt mit regelmäßiger LIVE Musik. Egal ob Jazz, Swing, Latin, Blues, Rock and Roll, A cappella oder Chanson - hier kommen Musikliebhaber aller Genres voll auf ihre Kosten! Neben der musikalischen Unterhaltung ist auch für das leibliche Wohl bestens gesorgt. Genießen Sie ausgesuchte Weine, zapffrisches Bier sowie etliche Spirituosen und Mischgetränke.",
+			en: ""
+		}
       },
       "geometry": {
         "type": "Point",
