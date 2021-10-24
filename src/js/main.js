@@ -43,10 +43,15 @@ L.control.scale({position:'bottomright',imperial:false}).addTo(map);
 const today = new Date();
 var weekday;
 if (today.getDay() - 1 < 0) {
-	weekday = 7;
+	weekday = 6;
 } else {
 	weekday = today.getDay() - 1;
 }
+var language = window.location.hash.split("#")[1];
+if (language === undefined) {
+	language = "de";
+}
+Object.freeze(language);
 
 var datedecoder = {
 	0: "mon",
@@ -57,17 +62,6 @@ var datedecoder = {
 	5: "sat",
 	6: "sun",
 	7: "hol"
-}
-
-var weekdaydecoder = {
-	"mon": "Montag",
-	"tue": "Dienstag",
-	"wed": "Mittwoch",
-	"thu": "Donnestag",
-	"fri": "Freitag",
-	"sat": "Samstag",
-	"sun": "Sonntag",
-	"hol": "Feiertag"
 }
 
 var barClosedMarker = L.icon({
@@ -81,12 +75,10 @@ var barOpenMarker = L.icon({
 });
 
 function isBarOpen (feature) {
-	//console.log(feature.properties.bar_name)
-	//console.log(feature.properties.opening_hours[datedecoder[weekday]][0]
-	//	+ " - " +
-	//	feature.properties.opening_hours[datedecoder[weekday]][1])
+	console.log(feature.properties.opening_hours[datedecoder[weekday]][0])
 	if (feature.properties.opening_hours[datedecoder[weekday]][0] === undefined ||
 		feature.properties.opening_hours[datedecoder[weekday]][0].length > 5) {
+		console.log("Closed - 1")
 		return false;
 	} else {
 		var t = feature.properties.opening_hours[datedecoder[weekday]][0].split(":")
@@ -99,9 +91,11 @@ function isBarOpen (feature) {
 			0,
 			0)
 		if (today.getTime() < d.getTime()) {
+			console.log("Closed - 2")
 			return false;
 		} else {
 			if (feature.properties.opening_hours[datedecoder[weekday]][1] === undefined) {
+				console.log("Open - 1")
 				return true;
 			} else {
 				var t = feature.properties.opening_hours[datedecoder[weekday]][1].split(":")
@@ -117,27 +111,27 @@ function isBarOpen (feature) {
 				if (dd.getTime() < d.getTime()) {
 					dd.setHours(dd.getHours() + 24)
 				}
-				//console.log(dd)
 				if (today.getTime() <= dd.getTime()) {
+					console.log("Open - 2")
 					return true;
 				}
-				else return false;
+				else {
+					console.log("Closed - 3")
+					return false;
+				}
 			}
 		}
 	}
 }
 
 function barMarker (feature, latlng, marker) {
-	//console.log("barMarker")
-	//console.log(feature.properties.bar_name)
 	var mark = L.marker(latlng, {icon: marker, title: feature.properties.bar_name, clickable:true});
 	var popupText = "<h3>" + feature.properties.bar_name + "</h3>" +
-		"<p><b>Öffnungszeiten</b><br>"
+		"<p><b>" + window[language].opening_hours + "</b><br>"
 	for (opening_hour in feature.properties.opening_hours) {
-		//console.log(feature.properties.opening_hours[opening_hour])
-		popupText += weekdaydecoder[opening_hour] + ": ";
+		popupText += window[language].weekdaydecoder[opening_hour] + ": ";
 		if (feature.properties.opening_hours[opening_hour].length === 0) {
-			popupText += "Keine Öffnungszeiten bekannt";
+			popupText += window[language].closed;
 		} else
 			popupText += feature.properties.opening_hours[opening_hour][0]
 			if (feature.properties.opening_hours[opening_hour][1] === undefined) {
@@ -150,12 +144,12 @@ function barMarker (feature, latlng, marker) {
 
 	popupText += "</p>"
 
-	popupText += "<p></p><b>Kontakt</b><br>";
-	popupText += "Fon: <a href=tel:" + feature.properties.phone + ">" + feature.properties.phone + "</a><br>";
-	popupText += 'Internet: <a target="_blank" rel="noopener noreferrer" href=' + feature.properties.web + '>' + feature.properties.web + '</a><br>'
-	popupText += 'Addresse: ' + feature.properties.address + '</p>'
-	popupText += '<p><b>Info</b><br>'
-	popupText += feature.properties.info + "</p>"
+	popupText += "<p></p><b>" + window[language].contact + "</b><br>";
+	popupText += window[language].phone + ": <a href=tel:" + feature.properties.phone + ">" + feature.properties.phone + "</a><br>";
+	popupText += window[language].internet + ': <a target="_blank" rel="noopener noreferrer" href=' + feature.properties.web + '>' + feature.properties.web + '</a><br>'
+	popupText += window[language].address + ': ' + feature.properties.address + '</p>'
+	popupText += '<p><b>' + window[language].info + '</b><br>'
+	popupText += feature.properties.info[language] + "</p>"
 	mark.bindPopup(popupText);
 	return mark;
 }
