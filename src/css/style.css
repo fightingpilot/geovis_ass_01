@@ -22,3 +22,12 @@ body{
 	position:fixed;
 	border:1px #444 solid;
 }
+
+select {
+	z-index: 1000;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	padding: 5px;
+	background: white;
+}

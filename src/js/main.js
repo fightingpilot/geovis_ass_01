@@ -78,7 +78,6 @@ function isBarOpen (feature) {
 	console.log(feature.properties.opening_hours[datedecoder[weekday]][0])
 	if (feature.properties.opening_hours[datedecoder[weekday]][0] === undefined ||
 		feature.properties.opening_hours[datedecoder[weekday]][0].length > 5) {
-		console.log("Closed - 1")
 		return false;
 	} else {
 		var t = feature.properties.opening_hours[datedecoder[weekday]][0].split(":")
@@ -91,11 +90,9 @@ function isBarOpen (feature) {
 			0,
 			0)
 		if (today.getTime() < d.getTime()) {
-			console.log("Closed - 2")
 			return false;
 		} else {
 			if (feature.properties.opening_hours[datedecoder[weekday]][1] === undefined) {
-				console.log("Open - 1")
 				return true;
 			} else {
 				var t = feature.properties.opening_hours[datedecoder[weekday]][1].split(":")
@@ -112,11 +109,9 @@ function isBarOpen (feature) {
 					dd.setHours(dd.getHours() + 24)
 				}
 				if (today.getTime() <= dd.getTime()) {
-					console.log("Open - 2")
 					return true;
 				}
 				else {
-					console.log("Closed - 3")
 					return false;
 				}
 			}

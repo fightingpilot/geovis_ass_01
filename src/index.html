@@ -20,9 +20,19 @@
 	<body>
 		<a href="#en" data-reload>English</a>
 		<a href="#de" data-reload>Deutsch</a>
+
 		<!--the sequence of elements called matters!-->
 		<!-- title of your map-->
 		<h1 id="head"></h1>
+
+		<!-- division div for the map -->
+		<div id="map">
+			<select id="languages">
+				<option><a href="#en">English</a></option>
+				<option href="#de" default>Deutsch</option>
+			</select>
+		</div>
+
 		<script>
 			var dataReload = document.querySelectorAll("[data-reload]");
 			if(window.location.hash){
@@ -43,10 +53,8 @@
 					}, 10)
 				};
 			};
+			window.onload=_=>{ language.selectedIndex = 2 }
 		</script>
-		
-		<!-- division div for the map -->
-		<div id="map"></div>
 		
 		<!-- link to main javascript file -->
 		<script src="js/main.js"></script>
