@@ -18,18 +18,15 @@
 				
 	</head>
 	<body>
-		<a href="#en" data-reload>English</a>
-		<a href="#de" data-reload>Deutsch</a>
-
 		<!--the sequence of elements called matters!-->
 		<!-- title of your map-->
 		<h1 id="head"></h1>
 
 		<!-- division div for the map -->
 		<div id="map">
-			<select id="languages">
-				<option><a href="#en">English</a></option>
-				<option href="#de" default>Deutsch</option>
+			<select id="languages" onchange="if (this.value) window.location.href=this.value">
+				<option value="#de" data-reload>Deutsch</option>
+				<option value="#en" data-reload>English</option>
 			</select>
 		</div>
 
@@ -53,7 +50,6 @@
 					}, 10)
 				};
 			};
-			window.onload=_=>{ language.selectedIndex = 2 }
 		</script>
 		
 		<!-- link to main javascript file -->
