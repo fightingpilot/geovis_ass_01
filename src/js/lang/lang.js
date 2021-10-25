@@ -1,3 +1,4 @@
+//variables containing langugage-specific encodings
 var de = {
     heading: "Bist du durstig?",
     opening_hours: "Öffnungszeiten",

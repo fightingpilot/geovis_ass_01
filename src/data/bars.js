@@ -1,3 +1,4 @@
+//variable containing all the bars
 var bars = {
   "type": "FeatureCollection",
   "features": [

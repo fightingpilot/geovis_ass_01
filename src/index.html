@@ -24,14 +24,18 @@
 
 		<!-- division div for the map -->
 		<div id="map">
+			<!-- option pane to change the language of the map -->
 			<select id="languages" onchange="if (this.value) window.location.href=this.value">
 				<option value="#de" data-reload>Deutsch</option>
 				<option value="#en" data-reload>English</option>
 			</select>
 		</div>
 
+		<!-- script to change the language of the map -->
 		<script>
+			<!-- queries all tags with the keyword 'data-reload' -->
 			var dataReload = document.querySelectorAll("[data-reload]");
+			<!-- changing the heading of the map depending on the selected language -->
 			if(window.location.hash){
 				if (window.location.hash === "#de") {
 					head.textContent = de.heading;
@@ -39,10 +43,11 @@
 				if (window.location.hash === "#en") {
 					head.textContent = en.heading;
 				}
-			} else {
+			} else { <!-- default heading -->
 				head.textContent = de.heading;
 			}
 
+			<!-- adding a behaviour to the data-reload tags -->
 			for (i = 0; i < dataReload.length; i++) {
 				dataReload[i].onclick = function () {
 					setTimeout(function () {

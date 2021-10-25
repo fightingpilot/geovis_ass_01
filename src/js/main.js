@@ -1,9 +1,6 @@
 // Using Leaflet for creating the map and adding controls for interacting with the map
 
-//
-//--- Part 1: adding base maps ---
-//
-
+//adding base maps
 //creating the map; defining the location in the center of the map (geographic coords) and the zoom level. These are properties of the leaflet map object
 //the map window has been given the id 'map' in the .html file
 var map = L.map('map', {
@@ -25,34 +22,27 @@ var baseMaps = {
 	"Toner": toner
 }
 
-//
-//---- Part 2: Adding a scale bar
-//
-
+//Adding a scale bar
 L.control.scale({position:'bottomright',imperial:false}).addTo(map);
 
-
-//
-//---- Part 3: Adding symbols ---- 
-//
-
-//
-//---- Part 4: adding features from the geojson file 
-//
-
 const today = new Date();
+//adding variable for the day of the the week
 var weekday;
 if (today.getDay() - 1 < 0) {
 	weekday = 6;
 } else {
 	weekday = today.getDay() - 1;
 }
+
+//adding variable for the language setting
 var language = window.location.hash.split("#")[1];
+//default language
 if (language === undefined) {
 	language = "de";
 }
 Object.freeze(language);
 
+//variable to decode the day of the week
 var datedecoder = {
 	0: "mon",
 	1: "tue",
@@ -64,22 +54,26 @@ var datedecoder = {
 	7: "hol"
 }
 
+//symbol for closed bars
 var barClosedMarker = L.icon({
 	iconUrl: 'css/images/cheers(1).png',
 	iconSize: [24, 24]
 });
 
+//symbol for open bars
 var barOpenMarker = L.icon({
 	iconUrl: 'css/images/cheers.png',
 	iconSize: [24, 24]
 });
 
+//function to check whether a bar is open or not
 function isBarOpen (feature) {
-	console.log(feature.properties.opening_hours[datedecoder[weekday]][0])
+	//check whether opening hours are given or not
 	if (feature.properties.opening_hours[datedecoder[weekday]][0] === undefined ||
 		feature.properties.opening_hours[datedecoder[weekday]][0].length > 5) {
 		return false;
 	} else {
+		//create a date-object with the opening hour
 		var t = feature.properties.opening_hours[datedecoder[weekday]][0].split(":")
 		var d = new Date(
 			today.getFullYear(),
@@ -89,12 +83,15 @@ function isBarOpen (feature) {
 			t[1],
 			0,
 			0)
+		//check if the current time is before the opening time
 		if (today.getTime() < d.getTime()) {
 			return false;
 		} else {
+			//check if a closing time is given
 			if (feature.properties.opening_hours[datedecoder[weekday]][1] === undefined) {
 				return true;
 			} else {
+				//create a date-object for the closing hour
 				var t = feature.properties.opening_hours[datedecoder[weekday]][1].split(":")
 				var dd = new Date(
 					today.getFullYear(),
@@ -105,9 +102,11 @@ function isBarOpen (feature) {
 					0,
 					0
 				)
+				//check if closing hour is before opening hour
 				if (dd.getTime() < d.getTime()) {
 					dd.setHours(dd.getHours() + 24)
 				}
+				//check if current time is before closing time
 				if (today.getTime() <= dd.getTime()) {
 					return true;
 				}
@@ -119,8 +118,11 @@ function isBarOpen (feature) {
 	}
 }
 
+//function to set-up the bar icon and pop-up
 function barMarker (feature, latlng, marker) {
+	//set-up the bar-marker
 	var mark = L.marker(latlng, {icon: marker, title: feature.properties.bar_name, clickable:true});
+	//set-up the popup contenct
 	var popupText = "<h3>" + feature.properties.bar_name + "</h3>" +
 		"<p><b>" + window[language].opening_hours + "</b><br>"
 	for (opening_hour in feature.properties.opening_hours) {
@@ -145,47 +147,29 @@ function barMarker (feature, latlng, marker) {
 	popupText += window[language].address + ': ' + feature.properties.address + '</p>'
 	popupText += '<p><b>' + window[language].info + '</b><br>'
 	popupText += feature.properties.info[language] + "</p>"
+	//bind the popup to the marker
 	mark.bindPopup(popupText);
 	return mark;
 }
 
+//adding features from the geojson file
 var allBars = L.geoJson(bars, {
 	pointToLayer: function (feature, latlng) {
+		//check is the bar is open or not
 		if (isBarOpen(feature)) {
+			//set-up the bar marker and popup text
 			return barMarker(feature, latlng, barOpenMarker);
+			//set-up the bar marker and popup text
 		}else return barMarker(feature, latlng, barClosedMarker);
 	}
 });
 
-var openBars = L.geoJson(bars, {
-	pointToLayer: function (feature, latlng) {
-		if (isBarOpen(feature)) {
-			return L.marker(latlng, {icon: barOpenMarker});
-		}
-	}
-});
-
-var closedBars = L.geoJson(bars, {
-	pointToLayer: function (feature, latlng) {
-		if (!isBarOpen(feature)) {
-			return L.marker(latlng, {icon: barClosedMarker});
-		}
-	}
-});
-
 allBars.addTo(map);
-//openBars.addTo(map);
-//closedBars.addTo(map);
 
-//
-//---- Part 5: Adding a layer control for base maps and feature layers
-//
-
+//Part 5: Adding a layer control for base maps and feature layers
 //the variable features lists layers that I want to control with the layer control
 var features = {
-	"Bars": allBars//,
-	//"Geöffnete Bars": openBars,
-	//"Geschlossene Bars": closedBars
+	"Bars": allBars
 }
 
 //the legend uses the layer control with entries for the base maps and two of the layers we added
