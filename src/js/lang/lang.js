@@ -17,7 +17,12 @@ var de = {
     phone: "Fon",
     internet: "Internet",
     address: "Adresse",
-    info: "Info"
+    info: "Info",
+    legend: {
+        title: "Legende",
+        open: "Geöffnet",
+        closed: "Geschlossen"
+    }
 };
 
 var en = {
@@ -38,5 +43,10 @@ var en = {
     phone: "Phone",
     internet: "Internet",
     address: "Address",
-    info: "Info"
+    info: "Info",
+    legend: {
+        title: "Legend",
+        open: "Open",
+        closed: "Closed"
+    }
 }
