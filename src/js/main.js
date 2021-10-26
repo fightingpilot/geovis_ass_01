@@ -8,18 +8,32 @@ var map = L.map('map', {
 	zoom: 14
 });
 
-//adding two base maps 
+//adding base maps
+var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	'attribution':  'Kartendaten &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+	'useCache': true
+});
 
-var landscape = L.tileLayer('http://{s}.tile.thunderforest.com/landscape/{z}/{x}/{y}.png', {
-	attribution: 'Tiles from Thunderforest'}).addTo(map);
+var BasemapAT_grau = L.tileLayer('https://maps{s}.wien.gv.at/basemap/bmapgrau/{type}/google3857/{z}/{y}/{x}.{format}', {
+	maxZoom: 19,
+	attribution: 'Datenquelle: <a href="https://www.basemap.at">basemap.at</a>',
+	subdomains: ["", "1", "2", "3", "4"],
+	type: 'normal',
+	format: 'png',
+	bounds: [[46.35877, 8.782379], [49.037872, 17.189532]]
+}).addTo(map);
 
-var toner = L.tileLayer('http://tile.stamen.com/toner/{z}/{x}/{y}.png', {attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>' });
-	toner; 
+var CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	subdomains: 'abcd',
+	maxZoom: 20
+});
 
 // for using the two base maps in the layer control, I defined a baseMaps variable
 var baseMaps = {
-	"Thunderforest landscape": landscape,
-	"Toner": toner
+	"OpenStreetMap": osm,
+	"Basemap AT": BasemapAT_grau,
+	"Light Gray": CartoDB_Positron
 }
 
 //Adding a scale bar
