@@ -39,21 +39,8 @@ var baseMaps = {
 //Adding a scale bar
 L.control.scale({position:'bottomright',imperial:false}).addTo(map);
 
-var legend = L.control({ position: "bottomleft" });
-
-legend.onAdd = function(map) {
-	var div = L.DomUtil.create("div", "legend");
-	//div.innerHTML += "<h4>" + window[language].legend.title + "</h4>";
-	//div.innerHTML += '<i style="background: #477AC2"></i><span>' + window[language].legend.open + '</span><br>';
-	//div.innerHTML += '<i style="background: #448D40"></i><span>' + window[language].legend.closed + '</span><br>';
-	div.innerHTML += '<i class="icon" style="background-image: url("src/css/images/marker-icon.png");background-repeat: no-repeat;"></i><span>Grænse</span><br>';
-
-	return div;
-};
-
-legend.addTo(map);
-
 const today = new Date();
+
 //adding variable for the day of the the week
 var weekday;
 if (today.getDay() - 1 < 0) {
@@ -61,14 +48,28 @@ if (today.getDay() - 1 < 0) {
 } else {
 	weekday = today.getDay() - 1;
 }
-
 //adding variable for the language setting
+
 var language = window.location.hash.split("#")[1];
 //default language
 if (language === undefined) {
 	language = "de";
 }
 Object.freeze(language);
+
+var legend = L.control({ position: "bottomleft" });
+
+legend.onAdd = function(map) {
+	var div = L.DomUtil.create("div", "legend");
+
+	div.innerHTML += "<h4>" + window[language].legend.title + "</h4>";
+	div.innerHTML += '<i class="icon" style="background-image: url(https://cdn-icons-png.flaticon.com/512/1087/1087972.png);background-repeat: no-repeat;"></i><span>' + window[language].legend.open + '</span><br>';
+	div.innerHTML += '<i class="icon" style="background-image: url(https://cdn-icons-png.flaticon.com/512/1088/1088016.png);background-repeat: no-repeat;"></i><span>' + window[language].legend.closed + '</span><br>';
+
+	return div;
+};
+
+legend.addTo(map);
 
 //variable to decode the day of the week
 var datedecoder = {
