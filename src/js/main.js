@@ -71,8 +71,76 @@ legend.onAdd = function(map) {
 
 legend.addTo(map);
 
+var open = false;
+var close = false;
+var overlays = [];
+
+function addToMap(layer, map) {
+	layer.addTo(map);
+	overlays.push(layer);
+}
+
 function cheapFunc(text) {
-	console.log("You clicked the cheapFunc " + text)
+	var removeMarkers = function() {
+		overlays.forEach( function(layer) {
+			map.removeLayer(layer)
+		});
+	overlays = [];
+	};
+	
+	if (text === "closed"){
+		if (!close) {
+			//map.removeLayer(allBars);
+			//map.removeLayer(openBars);
+			removeMarkers();
+			//closedBars.addTo(map);
+			addToMap(closedBars, map);
+			close = true;
+			open = false;
+		}
+		else if (close) {
+			//map.removeLayer(openBars);
+			//map.removeLayer(closedBars);
+			//allBars.addTo(map);
+			addToMap(allBars, map);
+			open = false;
+			close = false;
+		}
+		else if (open) {
+			map.removeLayer(openBars);
+			map.removeLayer(allBars)
+			//closedBars.addTo(map);
+			addToMap(closedBars, map);
+			close = true;
+			open = false;
+		}
+	};
+	if (text === "open"){
+		if (!open) {
+			map.removeLayer(allBars);
+			map.removeLayer(closedBars);
+			//openBars.addTo(map);
+			addToMap(openBars, map);
+			open = true;
+			close = false;
+		}
+		else if (open) {
+			map.removeLayer(openBars);
+			map.removeLayer(closedBars);
+			//allBars.addTo(map);
+			addToMap(allBars, map);
+			open = false;
+			close = false;
+		}
+		else if (closed) {
+			map.removeLayer(closedBars);
+			map.removeLayer(allBars);
+			//openBars.addTo(map);
+			addToMap(openBars, map);
+			close = false;
+			open = true;
+		}
+	};
 }
 
 //variable to decode the day of the week
@@ -104,7 +172,8 @@ function isBarOpen (feature) {
 	//check whether opening hours are given or not
 	if (feature.properties.opening_hours[datedecoder[weekday]][0] === undefined ||
 		feature.properties.opening_hours[datedecoder[weekday]][0].length > 5) {
-		return false;
+		feature.open = false;
+		//return false;
 	} else {
 		//create a date-object with the opening hour
 		var t = feature.properties.opening_hours[datedecoder[weekday]][0].split(":")
@@ -118,11 +187,13 @@ function isBarOpen (feature) {
 			0)
 		//check if the current time is before the opening time
 		if (today.getTime() < d.getTime()) {
-			return false;
+			feature.open = false;
+			//return false;
 		} else {
 			//check if a closing time is given
 			if (feature.properties.opening_hours[datedecoder[weekday]][1] === undefined) {
-				return true;
+				feature.open = true;
+				//return true;
 			} else {
 				//create a date-object for the closing hour
 				var t = feature.properties.opening_hours[datedecoder[weekday]][1].split(":")
@@ -141,14 +212,17 @@ function isBarOpen (feature) {
 				}
 				//check if current time is before closing time
 				if (today.getTime() <= dd.getTime()) {
-					return true;
+					feature.open = true
+					//return true;
 				}
 				else {
-					return false;
+					feature.open = false;
+					//return false;
 				}
 			}
 		}
 	}
+	return feature.open;
 }
 
 //function to set-up the bar icon and pop-up
@@ -197,17 +271,35 @@ var allBars = L.geoJson(bars, {
 	}
 });
 
-allBars.addTo(map);
+var openBars = L.geoJson(bars, {
+	pointToLayer: function (feature, latlng) {
+		//check is the bar is open or not
+		if (isBarOpen(feature)) {
+			//set-up the bar marker and popup text
+			return barMarker(feature, latlng, barOpenMarker);
+			//set-up the bar marker and popup text
+		}
+	}
+});
 
-for (bar in allBars) {
-	console.log(bar.getLayerID)
-};
+var closedBars = L.geoJson(bars, {
+	pointToLayer: function (feature, latlng) {
+		//check is the bar is open or not
+		if (!isBarOpen(feature)) {
+			//set-up the bar marker and popup text
+			return barMarker(feature, latlng, barClosedMarker);
+			//set-up the bar marker and popup text
+		}
+	}
+});
+
+addToMap(allBars, map);
 
 //Part 5: Adding a layer control for base maps and feature layers
 //the variable features lists layers that I want to control with the layer control
 var features = {
-	"Bars": allBars
 }
+
 
 //the legend uses the layer control with entries for the base maps and two of the layers we added
 //in case either base maps or features are not used in the layer control, the respective element in the properties is null
