@@ -29,119 +29,41 @@ var CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/
 	maxZoom: 20
 });
 
-// for using the two base maps in the layer control, I defined a baseMaps variable
+// for using the base maps in the layer control, I defined a baseMaps variable
 var baseMaps = {
 	"OpenStreetMap": osm,
 	"Basemap AT": BasemapAT_grau,
 	"Light Gray": CartoDB_Positron
 }
 
+//creating a legend
+var legend = L.control({ position: "bottomleft" });
+
 //Adding a scale bar
 L.control.scale({position:'bottomright',imperial:false}).addTo(map);
 
+//adding variable for the day (number) of the the week
 const today = new Date();
-
-//adding variable for the day of the the week
 var weekday;
 if (today.getDay() - 1 < 0) {
 	weekday = 6;
 } else {
 	weekday = today.getDay() - 1;
 }
-//adding variable for the language setting
 
+//adding variable for the language setting
 var language = window.location.hash.split("#")[1];
 //default language
 if (language === undefined) {
 	language = "de";
 }
+//freeze the language variable, so it can't be changed later on
 Object.freeze(language);
 
-var legend = L.control({ position: "bottomleft" });
-
-legend.onAdd = function(map) {
-	var div = L.DomUtil.create("div", "legend");
-
-	div.innerHTML += "<h4>" + window[language].legend.title + "</h4>";
-	div.innerHTML += '<i class="icon" onclick="cheapFunc(\'open\')" style="background-image: url(https://cdn-icons-png.flaticon.com/512/1087/1087972.png);background-repeat: no-repeat;"></i><span>' + window[language].legend.open + '</span><br>';
-	div.innerHTML += '<i class="icon" onclick="cheapFunc(\'closed\')" style="background-image: url(https://cdn-icons-png.flaticon.com/512/1088/1088016.png);background-repeat: no-repeat;"></i><span>' + window[language].legend.closed + '</span><br>';
-
-	return div;
-};
-
-legend.addTo(map);
-
+//variables to show layers based on the legend
 var open = false;
 var close = false;
 var overlays = [];
-
-function addToMap(layer, map) {
-	layer.addTo(map);
-	overlays.push(layer);
-}
-
-function cheapFunc(text) {
-	var removeMarkers = function() {
-		overlays.forEach( function(layer) {
-			map.removeLayer(layer)
-		});
-	overlays = [];
-	};
-	
-	if (text === "closed"){
-		if (!close) {
-			//map.removeLayer(allBars);
-			//map.removeLayer(openBars);
-			removeMarkers();
-			//closedBars.addTo(map);
-			addToMap(closedBars, map);
-			close = true;
-			open = false;
-		}
-		else if (close) {
-			//map.removeLayer(openBars);
-			//map.removeLayer(closedBars);
-			//allBars.addTo(map);
-			addToMap(allBars, map);
-			open = false;
-			close = false;
-		}
-		else if (open) {
-			map.removeLayer(openBars);
-			map.removeLayer(allBars)
-			//closedBars.addTo(map);
-			addToMap(closedBars, map);
-			close = true;
-			open = false;
-		}
-	};
-	if (text === "open"){
-		if (!open) {
-			map.removeLayer(allBars);
-			map.removeLayer(closedBars);
-			//openBars.addTo(map);
-			addToMap(openBars, map);
-			open = true;
-			close = false;
-		}
-		else if (open) {
-			map.removeLayer(openBars);
-			map.removeLayer(closedBars);
-			//allBars.addTo(map);
-			addToMap(allBars, map);
-			open = false;
-			close = false;
-		}
-		else if (closed) {
-			map.removeLayer(closedBars);
-			map.removeLayer(allBars);
-			//openBars.addTo(map);
-			addToMap(openBars, map);
-			close = false;
-			open = true;
-		}
-	};
-}
 
 //variable to decode the day of the week
 var datedecoder = {
@@ -166,6 +88,77 @@ var barOpenMarker = L.icon({
 	iconUrl: 'css/images/cheers.png',
 	iconSize: [24, 24]
 });
+
+//designing the legend
+legend.onAdd = function(map) {
+	var div = L.DomUtil.create("div", "legend");
+
+	div.innerHTML += "<h4>" + window[language].legend.title + "</h4>";
+	div.innerHTML += '<i class="icon" onclick="cheapFunc(\'open\')" style="background-image: url(https://cdn-icons-png.flaticon.com/512/1087/1087972.png);background-repeat: no-repeat;"></i><span>' + window[language].legend.open + '</span><br>';
+	div.innerHTML += '<i class="icon" onclick="cheapFunc(\'closed\')" style="background-image: url(https://cdn-icons-png.flaticon.com/512/1088/1088016.png);background-repeat: no-repeat;"></i><span>' + window[language].legend.closed + '</span><br>';
+
+	return div;
+};
+//add the legend to the map
+legend.addTo(map);
+
+//function to add layers to map and store the in overlays
+function addToMap(layer, map) {
+	layer.addTo(map);
+	overlays.push(layer);
+}
+
+//function to switch layers using the legend
+function cheapFunc(text) {
+	//inner function to remove the overlay layers
+	var removeMarkers = function() {
+		overlays.forEach( function(layer) {
+			map.removeLayer(layer)
+		});
+	overlays = [];
+	};
+
+	if (text === "closed"){
+		if (!close) {
+			removeMarkers();
+			addToMap(closedBars, map);
+			close = true;
+			open = false;
+		}
+		else if (close) {
+			removeMarkers();
+			addToMap(allBars, map);
+			open = false;
+			close = false;
+		}
+		else if (open) {
+			removeMarkers();
+			addToMap(closedBars, map);
+			close = true;
+			open = false;
+		}
+	};
+	if (text === "open"){
+		if (!open) {
+			removeMarkers();
+			addToMap(openBars, map);
+			open = true;
+			close = false;
+		}
+		else if (open) {
+			removeMarkers();
+			addToMap(allBars, map);
+			open = false;
+			close = false;
+		}
+		else if (closed) {
+			removeMarkers();
+			addToMap(openBars, map);
+			close = false;
+			open = true;
+		}
+	};
+}
 
 //function to check whether a bar is open or not
 function isBarOpen (feature) {
