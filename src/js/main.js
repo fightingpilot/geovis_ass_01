@@ -94,8 +94,8 @@ legend.onAdd = function(map) {
 	var div = L.DomUtil.create("div", "legend");
 
 	div.innerHTML += "<h4>" + window[language].legend.title + "</h4>";
-	div.innerHTML += '<i class="icon" onclick="cheapFunc(\'open\')" style="background-image: url(https://cdn-icons-png.flaticon.com/512/1087/1087972.png);background-repeat: no-repeat;"></i><span>' + window[language].legend.open + '</span><br>';
-	div.innerHTML += '<i class="icon" onclick="cheapFunc(\'closed\')" style="background-image: url(https://cdn-icons-png.flaticon.com/512/1088/1088016.png);background-repeat: no-repeat;"></i><span>' + window[language].legend.closed + '</span><br>';
+	div.innerHTML += '<i class="icon" onclick="cheapFunc(\'open\')" style="background-image: url(\'css/images/cheers.png\');background-repeat: no-repeat;"></i><span>' + window[language].legend.open + '</span><br>';
+	div.innerHTML += '<i class="icon" onclick="cheapFunc(\'closed\')" style="background-image: url(\'css/images/cheers(1).png\');background-repeat: no-repeat;"></i><span>' + window[language].legend.closed + '</span><br>';
 
 	return div;
 };
